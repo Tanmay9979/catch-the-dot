@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Dot</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #gameArea {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            background-color: #fff;
+            border: 2px solid #333;
+        }
+        .dot {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <div class="dot" id="dot"></div>
+    </div>
+
+    <script>
+        const dot = document.getElementById('dot');
+        const gameArea = document.getElementById('gameArea');
+        let score = 0;
+
+        function moveDot() {
+            const x = Math.random() * (gameArea.clientWidth - dot.clientWidth);
+            const y = Math.random() * (gameArea.clientHeight - dot.clientHeight);
+            dot.style.left = x + 'px';
+            dot.style.top = y + 'px';
+        }
+
+        dot.addEventListener('click', () => {
+            score++;
+            alert('Score: ' + score);
+            moveDot();
+        });
+
+        moveDot();
+    </script>
+</body>
+</html>
